@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class OvenService implements IGoodsService<Oven> {
     private Scanner scanner = new Scanner(System.in);
+
     @Override
     public Map<String, String> getSearchDataMap() {
         Map<String, String> valueMap = new HashMap<>();
@@ -31,12 +32,12 @@ public class OvenService implements IGoodsService<Oven> {
     @Override
     public void search(Map<String, String> map, List<Oven> ovenList) {
         for (Oven anOvenList : ovenList) {
-            if(anOvenList.isPowerConsumptionContains(map.get(Oven.POWER_CONSUMPTION))
+            if (anOvenList.isPowerConsumptionContains(map.get(Oven.POWER_CONSUMPTION))
                     && anOvenList.isCapacityContains(map.get(Oven.CAPACITY))
                     && anOvenList.isDepthContains(map.get(Oven.DEPTH))
                     && anOvenList.isHeightContains(map.get(Oven.HEIGHT))
                     && anOvenList.isWeightContains(map.get(Oven.WEIGHT))
-                    && anOvenList.isWidthContains(map.get(Oven.WIDTH))){
+                    && anOvenList.isWidthContains(map.get(Oven.WIDTH))) {
                 System.out.println(anOvenList.toString());
             }
 

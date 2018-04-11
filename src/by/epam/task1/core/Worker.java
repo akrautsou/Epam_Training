@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Worker {
-    private  List<Oven> ovenList = new ArrayList<>();
-    private  List<Refrigerator> refrigeratorList = new ArrayList<>();
-    private  List<Laptop> laptopList = new ArrayList<>();
+    private List<Oven> ovenList = new ArrayList<>();
+    private List<Refrigerator> refrigeratorList = new ArrayList<>();
+    private List<Laptop> laptopList = new ArrayList<>();
     private OvenService ovenService;
     private LaptopService laptopService;
 
@@ -74,7 +74,7 @@ public class Worker {
         return string;
     }
 
-    public void search(String goodsType, Map<String, String> map){
+    public void search(String goodsType, Map<String, String> map) {
         IGoods iGoods = GoodsFactory.getGoods(GoodsType.valueOf(goodsType.toUpperCase()));
         if (iGoods instanceof Oven) {
             ovenService.search(map, ovenList);
@@ -83,7 +83,7 @@ public class Worker {
             laptopService.search(map, laptopList);
         }
         if (iGoods instanceof Refrigerator) {
-            refrigeratorService.search(map,refrigeratorList);
+            refrigeratorService.search(map, refrigeratorList);
         }
     }
 }

@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class RefrigeratorService implements IGoodsService<Refrigerator> {
     private Scanner scanner = new Scanner(System.in);
+
     @Override
     public Map<String, String> getSearchDataMap() {
         Map<String, String> valueMap = new HashMap<>();
@@ -31,12 +32,12 @@ public class RefrigeratorService implements IGoodsService<Refrigerator> {
     @Override
     public void search(Map<String, String> map, List<Refrigerator> refrigeratorList) {
         for (Refrigerator anRefrigeratorList : refrigeratorList) {
-            if(anRefrigeratorList.isPowerConsumptionContains(map.get(Refrigerator.POWER_CONSUMPTION))
+            if (anRefrigeratorList.isPowerConsumptionContains(map.get(Refrigerator.POWER_CONSUMPTION))
                     && anRefrigeratorList.isFreezerCapacityContains(map.get(Refrigerator.FREEZER_CAPACITY))
                     && anRefrigeratorList.isOverallCapacityContains(map.get(Refrigerator.OVERALL_CAPACITY))
                     && anRefrigeratorList.isHeightContains(map.get(Refrigerator.HEIGHT))
                     && anRefrigeratorList.isWeightContains(map.get(Refrigerator.WEIGHT))
-                    && anRefrigeratorList.isWidthContains(map.get(Refrigerator.WIDTH))){
+                    && anRefrigeratorList.isWidthContains(map.get(Refrigerator.WIDTH))) {
                 System.out.println(anRefrigeratorList.toString());
             }
 

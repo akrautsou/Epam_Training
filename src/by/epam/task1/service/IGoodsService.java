@@ -7,5 +7,6 @@ import java.util.Map;
 
 public interface IGoodsService<G extends IGoods> {
     Map<String, String> getSearchDataMap();
+
     void search(Map<String, String> map, List<G> list);
 }

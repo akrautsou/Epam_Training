@@ -4,8 +4,6 @@ import by.epam.task1.entity.*;
 import by.epam.task1.service.LaptopService;
 import by.epam.task1.service.OvenService;
 import by.epam.task1.service.RefrigeratorService;
-import by.epam.task1.core.Viewer;
-import by.epam.task1.core.Worker;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,14 +46,16 @@ public class Menu {
     public void setOvenService(OvenService ovenService) {
         this.ovenService = ovenService;
     }
+
     private Scanner scanner = new Scanner(System.in);
     private String string = "";
+
     public void menuFirst() {
         Viewer.output("What do you want " + "\n");
         Viewer.output("1 " + GoodsType.OVEN + "\n");
         Viewer.output("2 " + GoodsType.REFRIGERATOR + "\n");
         Viewer.output("3 " + GoodsType.LAPTOP + "\n");
-        String  choice = scanner.nextLine();
+        String choice = scanner.nextLine();
         switch (choice) {
             case "1":
                 string += GoodsType.OVEN;
@@ -82,7 +82,7 @@ public class Menu {
             valueMap = refrigeratorService.getSearchDataMap();
         }
         if (iGoods instanceof Laptop) {
-           valueMap = laptopService.getSearchDataMap();
+            valueMap = laptopService.getSearchDataMap();
         }
         if (iGoods instanceof Oven) {
             valueMap = ovenService.getSearchDataMap();

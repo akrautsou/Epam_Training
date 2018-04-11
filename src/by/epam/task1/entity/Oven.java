@@ -113,6 +113,7 @@ public class Oven implements IGoods {
             }
         }
     }
+
     public boolean isPowerConsumptionContains(String value) {
         return value.isEmpty() || getPowerConsumption() != null && getPowerConsumption() >= Double.valueOf(value);
     }

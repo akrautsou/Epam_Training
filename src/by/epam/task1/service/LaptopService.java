@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class LaptopService implements IGoodsService<Laptop> {
     private Scanner scanner = new Scanner(System.in);
+
     @Override
     public Map<String, String> getSearchDataMap() {
         Map<String, String> valueMap = new HashMap<>();
@@ -31,12 +32,12 @@ public class LaptopService implements IGoodsService<Laptop> {
     @Override
     public void search(Map<String, String> map, List<Laptop> laptopList) {
         for (Laptop anLaptopList : laptopList) {
-            if(anLaptopList.isBatteryCapacityContains(map.get(Laptop.BATTERY_CAPACITY))
+            if (anLaptopList.isBatteryCapacityContains(map.get(Laptop.BATTERY_CAPACITY))
                     && anLaptopList.isCpuContains(map.get(Laptop.CPU))
                     && anLaptopList.isOsContains(map.get(Laptop.OS))
                     && anLaptopList.isDisplayInchesContains(map.get(Laptop.DISPLAY_INCHES))
                     && anLaptopList.isSystemMemoryContains(map.get(Laptop.SYSTEM_MEMORY))
-                    && anLaptopList.isMemoryRomContains(map.get(Laptop.MEMORY_ROM))){
+                    && anLaptopList.isMemoryRomContains(map.get(Laptop.MEMORY_ROM))) {
                 System.out.println(anLaptopList.toString());
             }
 
