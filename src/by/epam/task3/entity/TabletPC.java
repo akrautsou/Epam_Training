@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class TabletPC implements IGoods{
@@ -32,7 +33,7 @@ public class TabletPC implements IGoods{
         return batteryCapacity;
     }
 
-    private void setBatteryCapacity(Double batteryCapacity) {
+    public void setBatteryCapacity(Double batteryCapacity) {
         this.batteryCapacity = batteryCapacity;
     }
 
@@ -40,7 +41,7 @@ public class TabletPC implements IGoods{
         return displayInches;
     }
 
-    private void setDisplayInches(Double displayInches) {
+    public void setDisplayInches(Double displayInches) {
         this.displayInches = displayInches;
     }
 
@@ -48,7 +49,7 @@ public class TabletPC implements IGoods{
         return memoryRom;
     }
 
-    private void setMemoryRom(Double memotyRom) {
+    public void setMemoryRom(Double memotyRom) {
         this.memoryRom = memotyRom;
     }
 
@@ -56,7 +57,7 @@ public class TabletPC implements IGoods{
         return flashMemoryCapacity;
     }
 
-    private void setFlashMemoryCapacity(Double flashMemoryCapacity) {
+    public void setFlashMemoryCapacity(Double flashMemoryCapacity) {
         this.flashMemoryCapacity = flashMemoryCapacity;
     }
 
@@ -64,7 +65,7 @@ public class TabletPC implements IGoods{
         return color;
     }
 
-    private void setColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -99,6 +100,17 @@ public class TabletPC implements IGoods{
                 setColor(aValue.getValue().toString());
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(BATTERY_CAPACITY, getBatteryCapacity());
+        map.put(DISPLAY_INCHES, getDisplayInches());
+        map.put(MEMORY_ROM, getMemoryRom());
+        map.put(FLASH_MEMORY_CAPACITY, getFlashMemoryCapacity());
+        map.put(COLOR, getColor());
+        return map;
     }
 
     public boolean isBatteryCapacityContains(String value) {

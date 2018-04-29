@@ -2,13 +2,14 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class TextBook implements IGoods{
+public class TextBook implements IGoods {
     public static final String TITLE = "TITLE";
     public static final String SUBJECT = "SUBJECT";
     public static final String AUTHOR = "AUTHOR";
-    public static final String NUMBER_OF_PAGES = "DEPTH";
+    public static final String NUMBER_OF_PAGES = "NUMBER_OF_PAGES";
 
     private String title;
     private String subject;
@@ -29,7 +30,7 @@ public class TextBook implements IGoods{
         return title;
     }
 
-    private void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -37,7 +38,7 @@ public class TextBook implements IGoods{
         return subject;
     }
 
-    private void setSubject(String subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
@@ -45,7 +46,7 @@ public class TextBook implements IGoods{
         return author;
     }
 
-    private void setAuthor(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -53,7 +54,7 @@ public class TextBook implements IGoods{
         return numberOfPages;
     }
 
-    private void setNumberOfPages(int numberOfPages) {
+    public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
 
@@ -69,7 +70,7 @@ public class TextBook implements IGoods{
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (TextBook.TITLE.equals(aValue.getKey().toUpperCase())) {
                 setTitle(aValue.getValue().toString());
             }
@@ -83,6 +84,16 @@ public class TextBook implements IGoods{
                 setNumberOfPages(Integer.parseInt(aValue.getValue().toString()));
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(TITLE, getTitle());
+        map.put(SUBJECT, getSubject());
+        map.put(AUTHOR, getAuthor());
+        map.put(NUMBER_OF_PAGES, getNumberOfPages());
+        return map;
     }
 
     public boolean isTitleContains(String value) {

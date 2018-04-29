@@ -5,9 +5,7 @@ import by.epam.task3.dao.NewspaperDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.Newspaper;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class NewspaperService implements IGoodsService<Newspaper> {
@@ -30,6 +28,37 @@ public class NewspaperService implements IGoodsService<Newspaper> {
         List<Newspaper> goodsList = newspaperDao.search(criteria);
         for (Newspaper anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<Newspaper> newspaperList = newspaperDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < newspaperList.size(); i++) {
+            Viewer.output(i + " - " + newspaperList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("TITLE");
+        String title = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("PERIODICITY");
+        String periodicity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("PAID_OR_FREE");
+        String paidOrFree = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (newspaperList.size() > Integer.parseInt(choice)) {
+                Newspaper newspaper = newspaperList.get(Integer.parseInt(choice));
+                newspaper.setTitle(title);
+                newspaper.setPeriodicity(periodicity);
+                newspaper.setPaidOrFree(paidOrFree);
+                newspaperDao.update(newspaperList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 }

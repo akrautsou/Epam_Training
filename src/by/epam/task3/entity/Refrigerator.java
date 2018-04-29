@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Refrigerator implements IGoods {
@@ -34,7 +35,7 @@ public class Refrigerator implements IGoods {
         return powerConsumption;
     }
 
-    private void setPowerConsumption(Double powerConsumption) {
+    public void setPowerConsumption(Double powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
 
@@ -42,7 +43,7 @@ public class Refrigerator implements IGoods {
         return weight;
     }
 
-    private void setWeight(Double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -50,7 +51,7 @@ public class Refrigerator implements IGoods {
         return freezerCapacity;
     }
 
-    private void setFreezerCapacity(Double freezerCapacity) {
+    public void setFreezerCapacity(Double freezerCapacity) {
         this.freezerCapacity = freezerCapacity;
     }
 
@@ -58,7 +59,7 @@ public class Refrigerator implements IGoods {
         return overallCapacity;
     }
 
-    private void setOverallCapacity(Double overallCapacity) {
+    public void setOverallCapacity(Double overallCapacity) {
         this.overallCapacity = overallCapacity;
     }
 
@@ -66,7 +67,7 @@ public class Refrigerator implements IGoods {
         return height;
     }
 
-    private void setHeight(Double height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
@@ -74,7 +75,7 @@ public class Refrigerator implements IGoods {
         return width;
     }
 
-    private void setWidth(Double width) {
+    public void setWidth(Double width) {
         this.width = width;
     }
 
@@ -112,6 +113,18 @@ public class Refrigerator implements IGoods {
                 setWidth(Double.parseDouble(aValue.getValue().toString()));
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(POWER_CONSUMPTION, getPowerConsumption());
+        map.put(WEIGHT, getWeight());
+        map.put(FREEZER_CAPACITY, getFreezerCapacity());
+        map.put(OVERALL_CAPACITY, getOverallCapacity());
+        map.put(HEIGHT, getHeight());
+        map.put(WIDTH, getWidth());
+        return map;
     }
 
     public boolean isPowerConsumptionContains(String value) {

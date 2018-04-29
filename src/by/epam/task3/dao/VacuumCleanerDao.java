@@ -1,6 +1,7 @@
 package by.epam.task3.dao;
 
 import by.epam.task3.entity.Criteria;
+import by.epam.task3.entity.Oven;
 import by.epam.task3.entity.VacuumCleaner;
 import by.epam.task3.service.ServiceFactory;
 
@@ -15,8 +16,12 @@ public class VacuumCleanerDao implements IGoodsDao<VacuumCleaner> {
     }
 
     @Override
-    public void update(VacuumCleaner entity) {
-
+    public void update(List<VacuumCleaner> entity) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(VacuumCleaner anEntity: entity){
+            list.add(anEntity.getValues());
+        }
+        ServiceFactory.getInstance().getDbEngine().update(list, "VacuumCleaner".toUpperCase());
     }
 
     @Override
@@ -32,12 +37,12 @@ public class VacuumCleanerDao implements IGoodsDao<VacuumCleaner> {
         for (Map<String, Object> mapValue : list) {
             VacuumCleaner goods = new VacuumCleaner();
             goods.setValues(mapValue);
-            if (goods.isPowerConsumptionContains(criteria.getCriteria().get(VacuumCleaner.POWER_CONSUMPTION).toString())
+            if (criteria.getCriteria().isEmpty() || (goods.isPowerConsumptionContains(criteria.getCriteria().get(VacuumCleaner.POWER_CONSUMPTION).toString())
                     && goods.isFilterTypeContains(criteria.getCriteria().get(VacuumCleaner.FILTER_TYPE).toString())
                     && goods.isBagTypeContains(criteria.getCriteria().get(VacuumCleaner.BAG_TYPE).toString())
                     && goods.isWandTypeContains(criteria.getCriteria().get(VacuumCleaner.WAND_TYPE).toString())
                     && goods.isMotorSpeedRegulationContains(criteria.getCriteria().get(VacuumCleaner.MOTOR_SPEED_REGULATION).toString())
-                    && goods.isCleaningWidthContains(criteria.getCriteria().get(VacuumCleaner.CLEANING_WIDTH).toString())) {
+                    && goods.isCleaningWidthContains(criteria.getCriteria().get(VacuumCleaner.CLEANING_WIDTH).toString())) ){
                 resultList.add(goods);
             }
 

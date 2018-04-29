@@ -15,8 +15,12 @@ public class NewspaperDao implements IGoodsDao<Newspaper> {
     }
 
     @Override
-    public void update(Newspaper entity) {
-
+    public void update(List<Newspaper> entity) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(Newspaper anEntity: entity){
+            list.add(anEntity.getValues());
+        }
+        ServiceFactory.getInstance().getDbEngine().update(list, "Newspaper".toUpperCase());
     }
 
     @Override
@@ -32,9 +36,9 @@ public class NewspaperDao implements IGoodsDao<Newspaper> {
         for (Map<String, Object> mapValue : list) {
             Newspaper goods = new Newspaper();
             goods.setValues(mapValue);
-            if (goods.isTitleContains(criteria.getCriteria().get(Newspaper.TITLE).toString())
+            if (criteria.getCriteria().isEmpty() || (goods.isTitleContains(criteria.getCriteria().get(Newspaper.TITLE).toString())
                     && goods.isPeriodicityContains(criteria.getCriteria().get(Newspaper.PERIODICITY).toString())
-                    && goods.isPaidOrFreeContains(criteria.getCriteria().get(Newspaper.PAID_OR_FREE).toString())) {
+                    && goods.isPaidOrFreeContains(criteria.getCriteria().get(Newspaper.PAID_OR_FREE).toString()))) {
                 resultList.add(goods);
             }
 

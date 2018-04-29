@@ -5,9 +5,7 @@ import by.epam.task3.dao.VacuumCleanerDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.VacuumCleaner;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class VacuumCleanerService implements IGoodsService<VacuumCleaner> {
@@ -37,6 +35,46 @@ public class VacuumCleanerService implements IGoodsService<VacuumCleaner> {
         List<VacuumCleaner> goodsList = vacuumCleanerDao.search(criteria);
         for (VacuumCleaner anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<VacuumCleaner> vacuumCleanerList = vacuumCleanerDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < vacuumCleanerList.size(); i++) {
+            Viewer.output(i + " - " + vacuumCleanerList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("POWER_CONSUMPTION");
+        String powerConsumption = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("FILTER_TYPE");
+        String filterType = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("BAG_TYPE");
+        String bagType = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("WAND_TYPE");
+        String wandType = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("MOTOR_SPEED_REGULATION");
+        String motorSpeedRegulation = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("CLEANING_WIDTH");
+        String cleaningWidth = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (vacuumCleanerList.size() > Integer.parseInt(choice)) {
+                VacuumCleaner vacuumCleaner = vacuumCleanerList.get(Integer.parseInt(choice));
+                vacuumCleaner.setPowerConsumption(Double.valueOf(powerConsumption));
+                vacuumCleaner.setFilterType(filterType);
+                vacuumCleaner.setBagType(bagType);
+                vacuumCleaner.setWandType(wandType);
+                vacuumCleaner.setMotorSpeedRegulation(Double.valueOf(motorSpeedRegulation));
+                vacuumCleaner.setCleaningWidth(Double.valueOf(cleaningWidth));
+                vacuumCleanerDao.update(vacuumCleanerList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 

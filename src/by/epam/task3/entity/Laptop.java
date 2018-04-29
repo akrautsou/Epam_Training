@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Laptop implements IGoods {
@@ -34,7 +35,7 @@ public class Laptop implements IGoods {
         return batteryCapacity;
     }
 
-    private void setBatteryCapacity(Double batteryCapacity) {
+    public void setBatteryCapacity(Double batteryCapacity) {
         this.batteryCapacity = batteryCapacity;
     }
 
@@ -42,7 +43,7 @@ public class Laptop implements IGoods {
         return os;
     }
 
-    private void setOs(Os os) {
+    public void setOs(Os os) {
         this.os = os;
     }
 
@@ -50,7 +51,7 @@ public class Laptop implements IGoods {
         return memoryRom;
     }
 
-    private void setMemoryRom(Double memoryRom) {
+    public void setMemoryRom(Double memoryRom) {
         this.memoryRom = memoryRom;
     }
 
@@ -58,7 +59,7 @@ public class Laptop implements IGoods {
         return systemMemory;
     }
 
-    private void setSystemMemory(Double systemMemory) {
+    public void setSystemMemory(Double systemMemory) {
         this.systemMemory = systemMemory;
     }
 
@@ -66,7 +67,7 @@ public class Laptop implements IGoods {
         return cpu;
     }
 
-    private void setCpu(Double cpu) {
+    public void setCpu(Double cpu) {
         this.cpu = cpu;
     }
 
@@ -74,7 +75,7 @@ public class Laptop implements IGoods {
         return displayInches;
     }
 
-    private void setDisplayInches(Double displayInches) {
+    public void setDisplayInches(Double displayInches) {
         this.displayInches = displayInches;
     }
 
@@ -113,6 +114,18 @@ public class Laptop implements IGoods {
             }
         }
 
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(BATTERY_CAPACITY, getBatteryCapacity());
+        map.put(OS, getOs());
+        map.put(MEMORY_ROM, getMemoryRom());
+        map.put(SYSTEM_MEMORY, getSystemMemory  ());
+        map.put(CPU, getCpu());
+        map.put(DISPLAY_INCHES, getDisplayInches());
+        return map;
     }
 
     public boolean isOsContains(String value) {

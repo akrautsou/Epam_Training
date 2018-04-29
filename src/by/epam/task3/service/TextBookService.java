@@ -5,9 +5,7 @@ import by.epam.task3.dao.TextBookDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.TextBook;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class TextBookService implements IGoodsService<TextBook>{
@@ -33,6 +31,40 @@ public class TextBookService implements IGoodsService<TextBook>{
         List<TextBook> goodsList = textBookDao.search(criteria);
         for (TextBook anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<TextBook> textBookList = textBookDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < textBookList.size(); i++) {
+            Viewer.output(i + " - " + textBookList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("TITLE");
+        String title = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("SUBJECT");
+        String subject = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("AUTHOR");
+        String author = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("NUMBER_OF_PAGES");
+        String numberOfPages = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (textBookList.size() > Integer.parseInt(choice)) {
+                TextBook textBook = textBookList.get(Integer.parseInt(choice));
+                textBook.setTitle(title);
+                textBook.setSubject(subject);
+                textBook.setAuthor(author);
+                textBook.setNumberOfPages(Integer.valueOf(numberOfPages));
+                textBookDao.update(textBookList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 

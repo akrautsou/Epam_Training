@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class VacuumCleaner implements IGoods {
@@ -35,7 +36,7 @@ public class VacuumCleaner implements IGoods {
         return powerConsumption;
     }
 
-    private void setPowerConsumption(Double powerConsumption) {
+    public void setPowerConsumption(Double powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
 
@@ -43,7 +44,7 @@ public class VacuumCleaner implements IGoods {
         return filterType;
     }
 
-    private void setFilterType(String filterType) {
+    public void setFilterType(String filterType) {
         this.filterType = filterType;
     }
 
@@ -51,7 +52,7 @@ public class VacuumCleaner implements IGoods {
         return bagType;
     }
 
-    private void setBagType(String bagType) {
+    public void setBagType(String bagType) {
         this.bagType = bagType;
     }
 
@@ -59,7 +60,7 @@ public class VacuumCleaner implements IGoods {
         return wandType;
     }
 
-    private void setWandType(String wandType) {
+    public void setWandType(String wandType) {
         this.wandType = wandType;
     }
 
@@ -67,7 +68,7 @@ public class VacuumCleaner implements IGoods {
         return motorSpeedRegulation;
     }
 
-    private void setMotorSpeedRegulation(Double motorSpeedRegulation) {
+    public void setMotorSpeedRegulation(Double motorSpeedRegulation) {
         this.motorSpeedRegulation = motorSpeedRegulation;
     }
 
@@ -75,7 +76,7 @@ public class VacuumCleaner implements IGoods {
         return cleaningWidth;
     }
 
-    private void setCleaningWidth(Double cleaningWidth) {
+    public void setCleaningWidth(Double cleaningWidth) {
         this.cleaningWidth = cleaningWidth;
     }
 
@@ -113,6 +114,18 @@ public class VacuumCleaner implements IGoods {
                 setCleaningWidth(Double.parseDouble(aValue.getValue().toString()));
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(POWER_CONSUMPTION, getPowerConsumption());
+        map.put(FILTER_TYPE, getFilterType());
+        map.put(BAG_TYPE, getBagType());
+        map.put(WAND_TYPE, getWandType ());
+        map.put(MOTOR_SPEED_REGULATION, getMotorSpeedRegulation());
+        map.put(CLEANING_WIDTH, getCleaningWidth());
+        return map;
     }
 
     public boolean isPowerConsumptionContains(String value) {

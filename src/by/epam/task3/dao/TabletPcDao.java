@@ -1,9 +1,9 @@
 package by.epam.task3.dao;
 
 import by.epam.task3.entity.Criteria;
+import by.epam.task3.entity.Oven;
 import by.epam.task3.entity.TabletPC;
 import by.epam.task3.service.ServiceFactory;
-import javafx.scene.control.Tab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,12 @@ public class TabletPcDao implements IGoodsDao<TabletPC> {
     }
 
     @Override
-    public void update(TabletPC entity) {
-
+    public void update(List<TabletPC> entity) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(TabletPC anEntity: entity){
+            list.add(anEntity.getValues());
+        }
+        ServiceFactory.getInstance().getDbEngine().update(list, "TabletPC".toUpperCase());
     }
 
     @Override
@@ -33,11 +37,11 @@ public class TabletPcDao implements IGoodsDao<TabletPC> {
         for (Map<String, Object> mapValue : list) {
             TabletPC goods = new TabletPC();
             goods.setValues(mapValue);
-            if (goods.isBatteryCapacityContains(criteria.getCriteria().get(TabletPC.BATTERY_CAPACITY).toString())
+            if (criteria.getCriteria().isEmpty() || (goods.isBatteryCapacityContains(criteria.getCriteria().get(TabletPC.BATTERY_CAPACITY).toString())
                     && goods.isDisplayInchesContains(criteria.getCriteria().get(TabletPC.DISPLAY_INCHES).toString())
                     && goods.isMemoryRomContains(criteria.getCriteria().get(TabletPC.MEMORY_ROM).toString())
                     && goods.isFlashMemoryCapacityContains(criteria.getCriteria().get(TabletPC.FLASH_MEMORY_CAPACITY).toString())
-                    && goods.isColorContains(criteria.getCriteria().get(TabletPC.COLOR).toString())) {
+                    && goods.isColorContains(criteria.getCriteria().get(TabletPC.COLOR).toString()))) {
                 resultList.add(goods);
             }
 

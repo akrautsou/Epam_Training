@@ -4,11 +4,8 @@ import by.epam.task3.dao.RefrigeratorDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.Refrigerator;
 import by.epam.task3.core.Viewer;
-import com.sun.org.apache.regexp.internal.RE;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class RefrigeratorService implements IGoodsService<Refrigerator> {
@@ -38,6 +35,46 @@ public class RefrigeratorService implements IGoodsService<Refrigerator> {
         List<Refrigerator> goodsList = refrigeratorDao.search(criteria);
         for (Refrigerator anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<Refrigerator> refrigeratorList = refrigeratorDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < refrigeratorList.size(); i++) {
+            Viewer.output(i + " - " + refrigeratorList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("POWER_CONSUMPTION");
+        String powerConsumption = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("WEIGHT");
+        String weight = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("FREEZER_CAPACITY");
+        String freezer_capacity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("OVERALL_CAPACITY");
+        String overallCapacity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("HEIGHT");
+        String height = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("WIDTH");
+        String width = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (refrigeratorList.size() > Integer.parseInt(choice)) {
+                Refrigerator refrigerator = refrigeratorList.get(Integer.parseInt(choice));
+                refrigerator.setPowerConsumption(Double.valueOf(powerConsumption));
+                refrigerator.setWeight(Double.valueOf(weight));
+                refrigerator.setFreezerCapacity(Double.valueOf(freezer_capacity));
+                refrigerator.setOverallCapacity(Double.valueOf(overallCapacity));
+                refrigerator.setHeight(Double.valueOf(height));
+                refrigerator.setWidth(Double.valueOf(width));
+                refrigeratorDao.update(refrigeratorList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 }

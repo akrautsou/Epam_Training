@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Speakers implements IGoods {
@@ -29,7 +30,7 @@ public class Speakers implements IGoods {
         return powerConsumption;
     }
 
-    private void setPowerConsumption(Double powerConsumption) {
+    public void setPowerConsumption(Double powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
 
@@ -37,7 +38,7 @@ public class Speakers implements IGoods {
         return numberOfSpeakers;
     }
 
-    private void setNumberOfSpeakers(Double numberOfSpeakers) {
+    public void setNumberOfSpeakers(Double numberOfSpeakers) {
         this.numberOfSpeakers = numberOfSpeakers;
     }
 
@@ -45,7 +46,7 @@ public class Speakers implements IGoods {
         return frequencyRange;
     }
 
-    private void setFrequencyRange(String frequencyRange) {
+    public void setFrequencyRange(String frequencyRange) {
         this.frequencyRange = frequencyRange;
     }
 
@@ -53,7 +54,7 @@ public class Speakers implements IGoods {
         return cordLength;
     }
 
-    private void setCordLength(Double cordLength) {
+    public void setCordLength(Double cordLength) {
         this.cordLength = cordLength;
     }
 
@@ -83,6 +84,16 @@ public class Speakers implements IGoods {
                 setCordLength(Double.parseDouble(aValue.getValue().toString()));
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(POWER_CONSUMPTION, getPowerConsumption());
+        map.put(NUMBER_OF_SPEAKERS, getNumberOfSpeakers());
+        map.put(FREQUENCY_RANGE, getFrequencyRange());
+        map.put(CORD_LENGTH, getCordLength());
+        return map;
     }
 
     public boolean isPowerConsumptionContains(String value) {

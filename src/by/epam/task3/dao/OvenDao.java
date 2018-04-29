@@ -15,8 +15,12 @@ public class OvenDao implements IGoodsDao<by.epam.task3.entity.Oven> {
     }
 
     @Override
-    public void update(by.epam.task3.entity.Oven entity) {
-
+    public void update(List<Oven> entity) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(Oven anEntity: entity){
+            list.add(anEntity.getValues());
+        }
+        ServiceFactory.getInstance().getDbEngine().update(list, "Oven".toUpperCase());
     }
 
     @Override
@@ -32,12 +36,13 @@ public class OvenDao implements IGoodsDao<by.epam.task3.entity.Oven> {
         for (Map<String, Object> mapValue : list) {
             Oven goods = new Oven();
             goods.setValues(mapValue);
-            if (goods.isPowerConsumptionContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.POWER_CONSUMPTION).toString())
+            if (criteria.getCriteria().isEmpty() || (goods.isPowerConsumptionContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.POWER_CONSUMPTION).toString())
                     && goods.isCapacityContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.CAPACITY).toString())
                     && goods.isDepthContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.DEPTH).toString())
                     && goods.isHeightContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.HEIGHT).toString())
                     && goods.isWeightContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.WEIGHT).toString())
-                    && goods.isWidthContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.WIDTH).toString())) {
+                    && goods.isWidthContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.WIDTH).toString()))
+                    ) {
                 resultList.add(goods);
             }
         }

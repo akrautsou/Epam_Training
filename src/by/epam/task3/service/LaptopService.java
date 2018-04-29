@@ -4,10 +4,9 @@ import by.epam.task3.dao.LaptopDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.Laptop;
 import by.epam.task3.core.Viewer;
+import by.epam.task3.entity.Os;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class LaptopService implements IGoodsService<Laptop> {
@@ -37,6 +36,46 @@ public class LaptopService implements IGoodsService<Laptop> {
         List<Laptop> goodsList = laptopDao.search(criteria);
         for (Laptop anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<Laptop> laptopList = laptopDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < laptopList.size(); i++) {
+            Viewer.output(i + " - " + laptopList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("BATTERY_CAPACITY");
+        String batteryCapacity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("OS");
+        String os = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("MEMORY_ROM");
+        String memoryRom = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("SYSTEM_MEMORY");
+        String systemMemory = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("CPU");
+        String cpu = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("DISPLAY_INCHES");
+        String displayInches = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (laptopList.size() > Integer.parseInt(choice)) {
+                Laptop laptop = laptopList.get(Integer.parseInt(choice));
+                laptop.setBatteryCapacity(Double.valueOf(batteryCapacity));
+                laptop.setOs(Os.valueOf(os));
+                laptop.setMemoryRom(Double.valueOf(memoryRom));
+                laptop.setSystemMemory(Double.valueOf(systemMemory));
+                laptop.setCpu(Double.valueOf(cpu));
+                laptop.setDisplayInches(Double.valueOf(displayInches));
+                laptopDao.update(laptopList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 }

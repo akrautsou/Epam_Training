@@ -2,6 +2,7 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Newspaper implements IGoods {
@@ -26,7 +27,7 @@ public class Newspaper implements IGoods {
         return title;
     }
 
-    private void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -34,7 +35,7 @@ public class Newspaper implements IGoods {
         return periodicity;
     }
 
-    private void setPeriodicity(String periodicity) {
+    public void setPeriodicity(String periodicity) {
         this.periodicity = periodicity;
     }
 
@@ -42,7 +43,7 @@ public class Newspaper implements IGoods {
         return paidOrFree;
     }
 
-    private void setPaidOrFree(String paidOrFree) {
+    public void setPaidOrFree(String paidOrFree) {
         this.paidOrFree = paidOrFree;
     }
 
@@ -68,6 +69,15 @@ public class Newspaper implements IGoods {
                 setPaidOrFree(aValue.getValue().toString());
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(TITLE, getTitle());
+        map.put(PERIODICITY, getPeriodicity());
+        map.put(PAID_OR_FREE, getPaidOrFree());
+        return map;
     }
 
 

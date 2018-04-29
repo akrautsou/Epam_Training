@@ -2,6 +2,8 @@ package by.epam.task3.entity;
 
 import by.epam.task3.core.Parser;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Oven implements IGoods {
@@ -35,7 +37,7 @@ public class Oven implements IGoods {
         return powerConsumption;
     }
 
-    private void setPowerConsumption(Double powerConsumption) {
+    public void setPowerConsumption(Double powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
 
@@ -43,7 +45,7 @@ public class Oven implements IGoods {
         return weight;
     }
 
-    private void setWeight(Double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -51,7 +53,7 @@ public class Oven implements IGoods {
         return capacity;
     }
 
-    private void setCapacity(Double capacity) {
+    public void setCapacity(Double capacity) {
         this.capacity = capacity;
     }
 
@@ -59,7 +61,7 @@ public class Oven implements IGoods {
         return depth;
     }
 
-    private void setDepth(Double depth) {
+    public void setDepth(Double depth) {
         this.depth = depth;
     }
 
@@ -67,7 +69,7 @@ public class Oven implements IGoods {
         return height;
     }
 
-    private void setHeight(Double height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
@@ -75,7 +77,7 @@ public class Oven implements IGoods {
         return width;
     }
 
-    private void setWidth(Double width) {
+    public void setWidth(Double width) {
         this.width = width;
     }
 
@@ -113,6 +115,18 @@ public class Oven implements IGoods {
                 setWidth(Double.parseDouble(aValue.getValue().toString()));
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getValues(){
+        Map<String, Object> map = new HashMap<>();
+        map.put(POWER_CONSUMPTION, getPowerConsumption());
+        map.put(WEIGHT, getWeight());
+        map.put(CAPACITY, getCapacity());
+        map.put(DEPTH, getDepth());
+        map.put(HEIGHT, getHeight());
+        map.put(WIDTH, getWidth());
+        return map;
     }
 
     public boolean isPowerConsumptionContains(String value) {

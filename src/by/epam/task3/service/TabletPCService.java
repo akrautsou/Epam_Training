@@ -5,9 +5,7 @@ import by.epam.task3.dao.TabletPcDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.TabletPC;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class TabletPCService implements IGoodsService<TabletPC> {
@@ -36,6 +34,43 @@ public class TabletPCService implements IGoodsService<TabletPC> {
         List<TabletPC> goodsList = tabletPcDao.search(criteria);
         for (TabletPC anGoodsList : goodsList) {
             Viewer.output(anGoodsList);
+        }
+    }
+
+    @Override
+    public void editor() {
+        List<TabletPC> tabletPCList = tabletPcDao.search(new Criteria("Oven".toUpperCase()));
+        for (int i = 0; i < tabletPCList.size(); i++) {
+            Viewer.output(i + " - " + tabletPCList.get(i) + "");
+        }
+        Viewer.output("Choice");
+        String choice = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("BATTERY_CAPACITY");
+        String batteryCapacity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("DISPLAY_INCHES");
+        String displayInches = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("MEMORY_ROM");
+        String memoryRom = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("FLASH_MEMORY_CAPACITY");
+        String flashMemoryCapacity = ServiceFactory.getInstance().getScanner().nextLine();
+        Viewer.output("COLOR");
+        String color = ServiceFactory.getInstance().getScanner().nextLine();
+        try {
+            if (tabletPCList.size() > Integer.parseInt(choice)) {
+                TabletPC tabletPC = tabletPCList.get(Integer.parseInt(choice));
+                tabletPC.setBatteryCapacity(Double.valueOf(batteryCapacity));
+                tabletPC.setMemoryRom(Double.valueOf(memoryRom));
+                tabletPC.setFlashMemoryCapacity(Double.valueOf(flashMemoryCapacity));
+                tabletPC.setColor(color);
+                tabletPC.setDisplayInches(Double.valueOf(displayInches));
+                tabletPcDao.update(tabletPCList);
+            }else{
+                Viewer.output("Error");
+                System.exit(0);
+            }
+        }catch (NumberFormatException e){
+            Viewer.output("Error");
+            System.exit(0);
         }
     }
 }
