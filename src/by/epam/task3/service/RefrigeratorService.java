@@ -40,7 +40,7 @@ public class RefrigeratorService implements IGoodsService<Refrigerator> {
 
     @Override
     public void editor() {
-        List<Refrigerator> refrigeratorList = refrigeratorDao.search(new Criteria("Oven".toUpperCase()));
+        List<Refrigerator> refrigeratorList = refrigeratorDao.search(new Criteria("Refrigerator".toUpperCase()));
         for (int i = 0; i < refrigeratorList.size(); i++) {
             Viewer.output(i + " - " + refrigeratorList.get(i) + "");
         }

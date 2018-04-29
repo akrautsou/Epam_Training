@@ -38,7 +38,7 @@ public class SpeakersService implements IGoodsService<Speakers> {
 
     @Override
     public void editor() {
-        List<Speakers> speakersList = speakersDao.search(new Criteria("Oven".toUpperCase()));
+        List<Speakers> speakersList = speakersDao.search(new Criteria("Speakers".toUpperCase()));
         for (int i = 0; i < speakersList.size(); i++) {
             Viewer.output(i + " - " + speakersList.get(i) + "");
         }

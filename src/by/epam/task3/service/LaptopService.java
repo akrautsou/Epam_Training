@@ -41,7 +41,7 @@ public class LaptopService implements IGoodsService<Laptop> {
 
     @Override
     public void editor() {
-        List<Laptop> laptopList = laptopDao.search(new Criteria("Oven".toUpperCase()));
+        List<Laptop> laptopList = laptopDao.search(new Criteria("Laptop".toUpperCase()));
         for (int i = 0; i < laptopList.size(); i++) {
             Viewer.output(i + " - " + laptopList.get(i) + "");
         }

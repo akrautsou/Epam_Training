@@ -39,7 +39,7 @@ public class TabletPCService implements IGoodsService<TabletPC> {
 
     @Override
     public void editor() {
-        List<TabletPC> tabletPCList = tabletPcDao.search(new Criteria("Oven".toUpperCase()));
+        List<TabletPC> tabletPCList = tabletPcDao.search(new Criteria("TabletPC".toUpperCase()));
         for (int i = 0; i < tabletPCList.size(); i++) {
             Viewer.output(i + " - " + tabletPCList.get(i) + "");
         }

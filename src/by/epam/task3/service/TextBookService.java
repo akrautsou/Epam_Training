@@ -36,7 +36,7 @@ public class TextBookService implements IGoodsService<TextBook>{
 
     @Override
     public void editor() {
-        List<TextBook> textBookList = textBookDao.search(new Criteria("Oven".toUpperCase()));
+        List<TextBook> textBookList = textBookDao.search(new Criteria("TextBook".toUpperCase()));
         for (int i = 0; i < textBookList.size(); i++) {
             Viewer.output(i + " - " + textBookList.get(i) + "");
         }

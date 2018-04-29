@@ -33,7 +33,7 @@ public class NewspaperService implements IGoodsService<Newspaper> {
 
     @Override
     public void editor() {
-        List<Newspaper> newspaperList = newspaperDao.search(new Criteria("Oven".toUpperCase()));
+        List<Newspaper> newspaperList = newspaperDao.search(new Criteria("Newspaper".toUpperCase()));
         for (int i = 0; i < newspaperList.size(); i++) {
             Viewer.output(i + " - " + newspaperList.get(i) + "");
         }

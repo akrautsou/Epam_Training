@@ -40,7 +40,7 @@ public class VacuumCleanerService implements IGoodsService<VacuumCleaner> {
 
     @Override
     public void editor() {
-        List<VacuumCleaner> vacuumCleanerList = vacuumCleanerDao.search(new Criteria("Oven".toUpperCase()));
+        List<VacuumCleaner> vacuumCleanerList = vacuumCleanerDao.search(new Criteria("VacuumCleaner".toUpperCase()));
         for (int i = 0; i < vacuumCleanerList.size(); i++) {
             Viewer.output(i + " - " + vacuumCleanerList.get(i) + "");
         }

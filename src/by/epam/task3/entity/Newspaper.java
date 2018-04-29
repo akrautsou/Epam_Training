@@ -8,7 +8,7 @@ import java.util.Map;
 public class Newspaper implements IGoods {
     public static final String TITLE = "TITLE";
     public static final String PERIODICITY = "PERIODICITY";
-    public static final String PAID_OR_FREE = "PAIDORFREE";
+    public static final String PAID_OR_FREE = "PAID_OR_FREE";
 
     private String title;
     private String periodicity;
