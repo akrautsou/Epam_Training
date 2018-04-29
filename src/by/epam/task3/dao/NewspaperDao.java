@@ -9,23 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class NewspaperDao implements IGoodsDao<Newspaper> {
-    @Override
-    public void save(Newspaper entity) {
-
-    }
 
     @Override
     public void update(List<Newspaper> entity) {
         List<Map<String, Object>> list = new ArrayList<>();
-        for(Newspaper anEntity: entity){
+        for (Newspaper anEntity : entity) {
             list.add(anEntity.getValues());
         }
         ServiceFactory.getInstance().getDbEngine().update(list, "Newspaper".toUpperCase());
-    }
-
-    @Override
-    public void delete(Newspaper entity) {
-
     }
 
     @Override

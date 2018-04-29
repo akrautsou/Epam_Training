@@ -68,11 +68,11 @@ public class VacuumCleanerService implements IGoodsService<VacuumCleaner> {
                 vacuumCleaner.setMotorSpeedRegulation(Double.valueOf(motorSpeedRegulation));
                 vacuumCleaner.setCleaningWidth(Double.valueOf(cleaningWidth));
                 vacuumCleanerDao.update(vacuumCleanerList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

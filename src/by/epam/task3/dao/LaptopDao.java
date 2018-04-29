@@ -9,23 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class LaptopDao implements IGoodsDao<Laptop> {
-    @Override
-    public void save(Laptop entity) {
-
-    }
 
     @Override
     public void update(List<Laptop> entity) {
         List<Map<String, Object>> list = new ArrayList<>();
-        for(Laptop anEntity: entity){
+        for (Laptop anEntity : entity) {
             list.add(anEntity.getValues());
         }
         ServiceFactory.getInstance().getDbEngine().update(list, "Laptop".toUpperCase());
-    }
-
-    @Override
-    public void delete(Laptop entity) {
-
     }
 
     @Override
@@ -36,7 +27,7 @@ public class LaptopDao implements IGoodsDao<Laptop> {
         for (Map<String, Object> mapValue : list) {
             Laptop goods = new Laptop();
             goods.setValues(mapValue);
-            if (criteria.getCriteria().isEmpty() || (goods.isBatteryCapacityContains( criteria.getCriteria().get(Laptop.BATTERY_CAPACITY).toString())
+            if (criteria.getCriteria().isEmpty() || (goods.isBatteryCapacityContains(criteria.getCriteria().get(Laptop.BATTERY_CAPACITY).toString())
                     && goods.isCpuContains(criteria.getCriteria().get(Laptop.CPU).toString())
                     && goods.isOsContains(criteria.getCriteria().get(Laptop.OS).toString())
                     && goods.isDisplayInchesContains(criteria.getCriteria().get(Laptop.DISPLAY_INCHES).toString())

@@ -23,6 +23,7 @@ public class NewspaperService implements IGoodsService<Newspaper> {
         criteria.add(Newspaper.PAID_OR_FREE, scanner.nextLine());
         return criteria;
     }
+
     @Override
     public void search(Criteria criteria) {
         List<Newspaper> goodsList = newspaperDao.search(criteria);
@@ -52,11 +53,11 @@ public class NewspaperService implements IGoodsService<Newspaper> {
                 newspaper.setPeriodicity(periodicity);
                 newspaper.setPaidOrFree(paidOrFree);
                 newspaperDao.update(newspaperList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

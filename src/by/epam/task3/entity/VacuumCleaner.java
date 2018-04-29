@@ -1,7 +1,5 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,7 +92,7 @@ public class VacuumCleaner implements IGoods {
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (VacuumCleaner.POWER_CONSUMPTION.equals(aValue.getKey().toUpperCase())) {
                 setPowerConsumption(Double.parseDouble(aValue.getValue().toString()));
             }
@@ -122,7 +120,7 @@ public class VacuumCleaner implements IGoods {
         map.put(POWER_CONSUMPTION, getPowerConsumption());
         map.put(FILTER_TYPE, getFilterType());
         map.put(BAG_TYPE, getBagType());
-        map.put(WAND_TYPE, getWandType ());
+        map.put(WAND_TYPE, getWandType());
         map.put(MOTOR_SPEED_REGULATION, getMotorSpeedRegulation());
         map.put(CLEANING_WIDTH, getCleaningWidth());
         return map;

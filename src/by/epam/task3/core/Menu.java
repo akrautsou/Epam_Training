@@ -108,7 +108,6 @@ public class Menu {
 
     private void editType(String string) {
         IGoods iGoods = GoodsFactory.getGoods(GoodsType.valueOf(string.toUpperCase()));
-        Map<String, String> valueMap = new HashMap<>();
         Viewer.output("Select number to edit" + "\n");
         IGoodsService service = null;
         if (iGoods instanceof Refrigerator) {

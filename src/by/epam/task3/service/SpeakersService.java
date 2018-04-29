@@ -60,11 +60,11 @@ public class SpeakersService implements IGoodsService<Speakers> {
                 speakers.setFrequencyRange(frequencyRange);
                 speakers.setCordLength(Double.valueOf(cordLength));
                 speakersDao.update(speakersList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

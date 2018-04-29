@@ -69,11 +69,11 @@ public class LaptopService implements IGoodsService<Laptop> {
                 laptop.setCpu(Double.valueOf(cpu));
                 laptop.setDisplayInches(Double.valueOf(displayInches));
                 laptopDao.update(laptopList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

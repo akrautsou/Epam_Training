@@ -1,7 +1,5 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,7 +91,7 @@ public class Laptop implements IGoods {
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (Laptop.BATTERY_CAPACITY.equals(aValue.getKey().toUpperCase())) {
                 setBatteryCapacity(Double.parseDouble(aValue.getValue().toString()));
             }
@@ -122,7 +120,7 @@ public class Laptop implements IGoods {
         map.put(BATTERY_CAPACITY, getBatteryCapacity());
         map.put(OS, getOs());
         map.put(MEMORY_ROM, getMemoryRom());
-        map.put(SYSTEM_MEMORY, getSystemMemory  ());
+        map.put(SYSTEM_MEMORY, getSystemMemory());
         map.put(CPU, getCpu());
         map.put(DISPLAY_INCHES, getDisplayInches());
         return map;

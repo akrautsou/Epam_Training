@@ -1,19 +1,12 @@
 package by.epam.task3.service;
 
-import by.epam.task3.dao.DataEngine;
+import by.epam.task3.core.Viewer;
 import by.epam.task3.dao.OvenDao;
 import by.epam.task3.entity.Criteria;
 import by.epam.task3.entity.Oven;
-import by.epam.task3.core.Viewer;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
-import javax.xml.crypto.Data;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
 public class OvenService implements IGoodsService<Oven> {
     private OvenDao ovenDao = new OvenDao();
@@ -75,11 +68,11 @@ public class OvenService implements IGoodsService<Oven> {
                 oven.setWeight(Double.valueOf(weight));
                 oven.setWidth(Double.valueOf(width));
                 ovenDao.update(ovenList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

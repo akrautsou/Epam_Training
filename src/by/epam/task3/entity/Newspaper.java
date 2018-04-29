@@ -1,7 +1,5 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +56,7 @@ public class Newspaper implements IGoods {
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (Newspaper.TITLE.equals(aValue.getKey().toUpperCase())) {
                 setTitle(aValue.getValue().toString());
             }

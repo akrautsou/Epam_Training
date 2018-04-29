@@ -1,11 +1,9 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class TabletPC implements IGoods{
+public class TabletPC implements IGoods {
     public static final String BATTERY_CAPACITY = "BATTERY_CAPACITY";
     public static final String DISPLAY_INCHES = "DISPLAY_INCHES";
     public static final String MEMORY_ROM = "MEMORY_ROM";
@@ -83,7 +81,7 @@ public class TabletPC implements IGoods{
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (TabletPC.BATTERY_CAPACITY.equals(aValue.getKey().toUpperCase())) {
                 setBatteryCapacity(Double.parseDouble(aValue.getValue().toString()));
             }

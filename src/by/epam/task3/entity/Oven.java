@@ -1,9 +1,6 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Oven implements IGoods {
@@ -95,7 +92,7 @@ public class Oven implements IGoods {
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (Oven.POWER_CONSUMPTION.equals(aValue.getKey().toUpperCase())) {
                 setPowerConsumption(Double.parseDouble(aValue.getValue().toString()));
             }
@@ -118,7 +115,7 @@ public class Oven implements IGoods {
     }
 
     @Override
-    public Map<String, Object> getValues(){
+    public Map<String, Object> getValues() {
         Map<String, Object> map = new HashMap<>();
         map.put(POWER_CONSUMPTION, getPowerConsumption());
         map.put(WEIGHT, getWeight());

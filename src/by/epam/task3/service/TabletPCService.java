@@ -64,11 +64,11 @@ public class TabletPCService implements IGoodsService<TabletPC> {
                 tabletPC.setColor(color);
                 tabletPC.setDisplayInches(Double.valueOf(displayInches));
                 tabletPcDao.update(tabletPCList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

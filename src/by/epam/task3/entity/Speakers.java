@@ -1,7 +1,5 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 

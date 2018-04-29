@@ -68,11 +68,11 @@ public class RefrigeratorService implements IGoodsService<Refrigerator> {
                 refrigerator.setHeight(Double.valueOf(height));
                 refrigerator.setWidth(Double.valueOf(width));
                 refrigeratorDao.update(refrigeratorList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

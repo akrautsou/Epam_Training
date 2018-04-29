@@ -8,28 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class OvenDao implements IGoodsDao<by.epam.task3.entity.Oven> {
-    @Override
-    public void save(by.epam.task3.entity.Oven entity) {
-
-    }
+public class OvenDao implements IGoodsDao<Oven> {
 
     @Override
     public void update(List<Oven> entity) {
         List<Map<String, Object>> list = new ArrayList<>();
-        for(Oven anEntity: entity){
+        for (Oven anEntity : entity) {
             list.add(anEntity.getValues());
         }
         ServiceFactory.getInstance().getDbEngine().update(list, "Oven".toUpperCase());
     }
 
     @Override
-    public void delete(by.epam.task3.entity.Oven entity) {
-
-    }
-
-    @Override
-    public List<by.epam.task3.entity.Oven> search(Criteria criteria) {
+    public List<Oven> search(Criteria criteria) {
         List<Map<String, Object>> list = ServiceFactory.getInstance().getDbEngine().
                 getRecords(criteria.getType());
         List<Oven> resultList = new ArrayList<>();
@@ -37,11 +28,11 @@ public class OvenDao implements IGoodsDao<by.epam.task3.entity.Oven> {
             Oven goods = new Oven();
             goods.setValues(mapValue);
             if (criteria.getCriteria().isEmpty() || (goods.isPowerConsumptionContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.POWER_CONSUMPTION).toString())
-                    && goods.isCapacityContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.CAPACITY).toString())
-                    && goods.isDepthContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.DEPTH).toString())
-                    && goods.isHeightContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.HEIGHT).toString())
-                    && goods.isWeightContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.WEIGHT).toString())
-                    && goods.isWidthContains(criteria.getCriteria().get(by.epam.task3.entity.Oven.WIDTH).toString()))
+                    && goods.isCapacityContains(criteria.getCriteria().get(Oven.CAPACITY).toString())
+                    && goods.isDepthContains(criteria.getCriteria().get(Oven.DEPTH).toString())
+                    && goods.isHeightContains(criteria.getCriteria().get(Oven.HEIGHT).toString())
+                    && goods.isWeightContains(criteria.getCriteria().get(Oven.WEIGHT).toString())
+                    && goods.isWidthContains(criteria.getCriteria().get(Oven.WIDTH).toString()))
                     ) {
                 resultList.add(goods);
             }

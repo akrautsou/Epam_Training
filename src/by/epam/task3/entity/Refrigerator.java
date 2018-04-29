@@ -1,7 +1,5 @@
 package by.epam.task3.entity;
 
-import by.epam.task3.core.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,7 +91,7 @@ public class Refrigerator implements IGoods {
 
     @Override
     public void setValues(Map<String, Object> value) {
-        for (Map.Entry<String, Object> aValue: value.entrySet()) {
+        for (Map.Entry<String, Object> aValue : value.entrySet()) {
             if (Refrigerator.POWER_CONSUMPTION.equals(aValue.getKey().toUpperCase())) {
                 setPowerConsumption(Double.parseDouble(aValue.getValue().toString()));
             }

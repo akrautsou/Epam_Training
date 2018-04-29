@@ -1,7 +1,6 @@
 package by.epam.task3.dao;
 
 import by.epam.task3.entity.Criteria;
-import by.epam.task3.entity.Oven;
 import by.epam.task3.entity.TabletPC;
 import by.epam.task3.service.ServiceFactory;
 
@@ -10,23 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class TabletPcDao implements IGoodsDao<TabletPC> {
-    @Override
-    public void save(TabletPC entity) {
-
-    }
 
     @Override
     public void update(List<TabletPC> entity) {
         List<Map<String, Object>> list = new ArrayList<>();
-        for(TabletPC anEntity: entity){
+        for (TabletPC anEntity : entity) {
             list.add(anEntity.getValues());
         }
         ServiceFactory.getInstance().getDbEngine().update(list, "TabletPC".toUpperCase());
-    }
-
-    @Override
-    public void delete(TabletPC entity) {
-
     }
 
     @Override

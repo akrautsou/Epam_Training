@@ -2,33 +2,22 @@ package by.epam.task3.dao;
 
 
 import by.epam.task3.entity.Criteria;
-import by.epam.task3.entity.Oven;
 import by.epam.task3.entity.Refrigerator;
 import by.epam.task3.service.ServiceFactory;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class RefrigeratorDao implements IGoodsDao<Refrigerator> {
-    @Override
-    public void save(Refrigerator entity) {
-
-    }
 
     @Override
     public void update(List<Refrigerator> entity) {
         List<Map<String, Object>> list = new ArrayList<>();
-        for(Refrigerator anEntity: entity){
+        for (Refrigerator anEntity : entity) {
             list.add(anEntity.getValues());
         }
         ServiceFactory.getInstance().getDbEngine().update(list, "Refrigerator".toUpperCase());
-    }
-
-    @Override
-    public void delete(Refrigerator entity) {
-
     }
 
     @Override

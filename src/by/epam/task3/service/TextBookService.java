@@ -8,7 +8,7 @@ import by.epam.task3.entity.TextBook;
 import java.util.List;
 import java.util.Scanner;
 
-public class TextBookService implements IGoodsService<TextBook>{
+public class TextBookService implements IGoodsService<TextBook> {
     private TextBookDao textBookDao = new TextBookDao();
 
     @Override
@@ -58,11 +58,11 @@ public class TextBookService implements IGoodsService<TextBook>{
                 textBook.setAuthor(author);
                 textBook.setNumberOfPages(Integer.valueOf(numberOfPages));
                 textBookDao.update(textBookList);
-            }else{
+            } else {
                 Viewer.output("Error");
                 System.exit(0);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Viewer.output("Error");
             System.exit(0);
         }

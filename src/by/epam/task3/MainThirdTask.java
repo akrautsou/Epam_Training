@@ -1,8 +1,6 @@
 package by.epam.task3;
 
-import by.epam.task3.core.*;
-import by.epam.task3.dao.DataEngine;
-import by.epam.task3.service.*;
+import by.epam.task3.service.ServiceFactory;
 
 import java.io.IOException;
 
