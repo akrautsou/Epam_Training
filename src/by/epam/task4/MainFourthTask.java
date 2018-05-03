@@ -9,7 +9,7 @@ import by.epam.task4.viewer.Viewer;
 
 import java.util.*;
 
-public class MainFifthTask {
+public class MainFourthTask {
 
     public static void main(String[] args) {
         //=================================initz=====================================
