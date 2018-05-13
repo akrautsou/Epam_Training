@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class SaxMain {
 
     private final static String PATH = "C:\\Users\\Drico\\Documents\\IdeaProjects\\epam" +
-            "\\Epam_Training\\src\\by\\epam\\task5\\code\\file\\data.xml";
+            "\\Epam_Training\\src\\by\\epam\\task5\\file\\data.xml";
 
     public static void main(String[] args) {
         try {
